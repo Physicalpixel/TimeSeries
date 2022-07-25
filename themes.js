@@ -100,14 +100,6 @@ d3.csv('Bar_Race.csv').then(function (data) {
         ])
         .on('zoom', zoomed)
 
-    svg.append('defs')
-        .append('clipPath')
-        .attr('id', 'clip')
-        .append('rect')
-        .attr('fill', 'none')
-        .attr('width', width)
-        .attr('height', height)
-
     var focus = svg
         .append('g')
         .attr('class', 'focus')
