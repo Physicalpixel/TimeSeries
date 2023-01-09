@@ -31,13 +31,13 @@ d3.csv('Bar_Race.csv').then(function (data) {
     data = data.map((d) => ({
         date: new Date(d.date),
         value: +d.value,
-        name: d.category,
+        name: d.name,
     }))
     var color = d3
         .scaleOrdinal()
         .range(['#f16a70', '#b1d877', '#8cdcda', '#d3d3d3'])
         //pink green blue greay
-        .domain(d3.extent(data, (d) => d.category))
+        .domain(d3.extent(data, (d) => d.name))
 
     var data1 = data
     function topThemes(start, end) {
@@ -197,7 +197,7 @@ d3.csv('Bar_Race.csv').then(function (data) {
                     })
                     .attr('height', 25)
             })
-            .attr('fill', (d) => color(d.category))
+            .attr('fill', (d) => color(d.name))
             .attr('x', 0)
             .attr('y', (d, i) => {
                 return yScale(i)
@@ -221,7 +221,7 @@ d3.csv('Bar_Race.csv').then(function (data) {
             .attr('width', (d) => {
                 return widthScale(d.value)
             })
-            .html((d) => d.category)
+            .html((d) => d.name)
             .attr('height', 20)
             .attr('font-size', 12)
     }
